@@ -1,40 +1,40 @@
 package Game.util;
 
-    public class LinkList<T> {
+    public class MyLinkedList<T> {
 
         private Node<T> head;
-        public LinkList(){
+        public MyLinkedList(){
             this.head=null;
         }
 
         public void add(T data) {
             Node<T> node = new Node<>(data);
-            if (head == null) head = node;
+            if (head == null) this.head = node;
             else {
-                Node<T> current = head;
-                while (current.link != null)
-                    current = current.link;
-                current.link = node;
+                Node<T> current = this.head;
+                while (current.next != null)
+                    current = current.next;
+                current.next = node;
             }
         }
 
         public void printAll() {
-            Node<T> current = head;
+            Node<T> current = this.head;
             while (current != null) {
                 System.out.println(current.data);
-                current = current.link;
+                current = current.next;
             }
         }
-        
+
         public boolean remove(T data) {
             if (head == null) return false;
 
-            if (head.data.equals(data)) {
-                head = head.next;
+            if (this.head.data.equals(data)) {
+                this.head = this.head.next;
                 return true;
             }
 
-            Node<T> current = head;
+            Node<T> current = this.head;
             while (current.next != null) {
                 if (current.next.data.equals(data)) {
                     current.next = current.next.next;
@@ -47,7 +47,7 @@ package Game.util;
         }
 
         public void clear() {
-            head = null;
+            this.head = null;
         }
 
         public void addAll(MyLinkedList<T> other) {
@@ -59,16 +59,16 @@ package Game.util;
         }
 
         public Node<T> getHead() {
-            return head;
+            return this.head;
         }
 
         public boolean isEmpty() {
-            return head == null;
+            return this.head == null;
         }
 
         public int size() {
             int count = 0;
-            Node<T> current = head;
+            Node<T> current = this.head;
             while (current != null) {
                 count++;
                 current = current.next;
