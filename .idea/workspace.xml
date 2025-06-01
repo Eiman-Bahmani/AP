@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f3d7ae69-f3b0-4232-a09f-2f2483ece323" name="Changes" comment="ساختمان ها">
+      <changelist_data name="maseinbalayi" email="mhmdhsynbalayy0@gmail.com" automatic="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Login/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Login/GameBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Login/GameFileUtility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/model/GameOfThrones.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/model/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/A.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Login/GameUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Login/GameUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Login/LoginRegisterApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Login/LoginRegisterApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Login/UserSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Login/UserSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/model/Building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/model/Building/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/model/Kingdom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/model/Kingdom.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ho3einBalayi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Eiman-Bahmani/AP&quot;,
+    &quot;accountId&quot;: &quot;f29a4c52-d35a-41ac-9dfb-a7b9405321cb&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2xOqgg1MP9FEaZsJX7zcL5yCHbs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LoginRegisterApp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/maseinbalayi/IJ workspace/AP/src/Game/Login",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "repository"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Login" />
+      <recent name="$PROJECT_DIR$/src/Game/model" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="LoginRegisterApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Game.Login.LoginRegisterApp" />
+      <module name="AP" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../javafx-sdk-24.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Game.Login.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LoginRegisterApp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3d7ae69-f3b0-4232-a09f-2f2483ece323" name="Changes" comment="" />
+      <created>1747296534215</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747296534215</updated>
+    </task>
+    <task id="LOCAL-00001" summary="ساختمان ها">
+      <option name="closed" value="true" />
+      <created>1748790270705</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1748790270705</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ساختمان ها" />
+    <option name="LAST_COMMIT_MESSAGE" value="ساختمان ها" />
+  </component>
+</project>

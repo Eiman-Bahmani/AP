@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -16,7 +15,6 @@ public class LoginRegisterApp extends Application {
     private UserSystem userSystem = new UserSystem();
     private Stage primaryStage;
     private Font gotFont;
-    private int capacity = 0;
 
     @Override
     public void start(Stage stage) {
@@ -72,7 +70,7 @@ public class LoginRegisterApp extends Application {
             GameUser user = userSystem.login(username, password);
             if (user != null) {
                 statusLabel.setStyle("-fx-text-fill: green;-fx-font-family: Arial");
-                statusLabel.setText("✅ Successful login، " + user.username + "!");
+                statusLabel.setText("✅ Successful login، " + user.getUsername() + "!");
             } else {
                 statusLabel.setText("Login failed ❌ Please check the information..");
             }

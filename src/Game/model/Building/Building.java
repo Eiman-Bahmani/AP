@@ -4,7 +4,7 @@ import Game.model.Position;
 public abstract class Building {
     protected String name;
     protected int level;
-    protected int strength;
+    protected int strength; //مقاومت
     protected Position position; // پوزیشن ساختمان
 
     public Building(String name, int level, Position position,int strength) {

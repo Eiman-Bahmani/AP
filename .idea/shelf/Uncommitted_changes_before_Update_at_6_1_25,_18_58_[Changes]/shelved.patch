@@ -1,0 +1,67 @@
+Index: src/Game/A.java
+===================================================================
+diff --git a/src/Game/A.java b/src/Game/A.java
+deleted file mode 100644
+--- a/src/Game/A.java	(revision e10569cac1d4b50812a1bebdf84abcc94e842ce6)
++++ /dev/null	(revision e10569cac1d4b50812a1bebdf84abcc94e842ce6)
+@@ -1,4 +0,0 @@
+-package Game;
+-
+-public class A {
+-}
+Index: src/Game/Login/UserSystem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game.Login;\n\nimport java.io.*;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class UserSystem {\n    private List<GameUser> users = new ArrayList<>();\n    private int nextId = 1;\n    private final File userFile = new File(\"users.txt\");\n\n    public UserSystem() {\n        loadUsersFromFile(); // موقع اجرا، لیست رو از فایل بخون\n    }\n\n    public GameUser login(String username, String password) {\n        for (GameUser user : users) {\n            if (user.username.equals(username) && user.password.equals(password)) {\n                return user;\n            }\n        }\n        return null;\n    }\n\n    public boolean register(String username, String password, String confirmPassword) {\n        if (!password.equals(confirmPassword)) return false;\n        if (username == null || username.isEmpty()) return false;\n        if (password == null || password.length() != 8) return false;\n        if (users.size() >= 7) return false;\n\n        for (GameUser user : users) {\n            if (user.username.equals(username)) {\n                return false; // نام تکراری\n            }\n        }\n\n        GameUser newUser = new GameUser(username, password, nextId++);\n        users.add(newUser);\n        saveUsersToFile();\n        return true;\n    }\n\n    private void saveUsersToFile() {\n        try (PrintWriter writer = new PrintWriter(new FileWriter(userFile))) {\n            for (GameUser user : users) {\n                writer.println(user.id + \",\" + user.username + \",\" + user.password);\n            }\n        } catch (IOException e) {\n            System.out.println(\"خطا در ذخیره\u200Cسازی کاربران: \" + e.getMessage());\n        }\n    }\n\n    private void loadUsersFromFile() {\n        if (!userFile.exists()) return;\n\n        try (BufferedReader reader = new BufferedReader(new FileReader(userFile))) {\n            String line;\n            while ((line = reader.readLine()) != null) {\n                String[] parts = line.split(\",\");\n                if (parts.length == 3) {\n                    int id = Integer.parseInt(parts[0]);\n                    String username = parts[1];\n                    String password = parts[2];\n                    users.add(new GameUser(username, password, id));\n                    if (id >= nextId) {\n                        nextId = id + 1;\n                    }\n                }\n            }\n        } catch (IOException e) {\n            System.out.println(\"خطا در خواندن کاربران از فایل: \" + e.getMessage());\n        }\n    }\n\n    public int getUserCount() {\n        return users.size();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Game/Login/UserSystem.java b/src/Game/Login/UserSystem.java
+--- a/src/Game/Login/UserSystem.java	(revision e10569cac1d4b50812a1bebdf84abcc94e842ce6)
++++ b/src/Game/Login/UserSystem.java	(date 1747988903783)
+@@ -1,16 +1,15 @@
+ package Game.Login;
+ 
++import Game.util.LinkList;
+ import java.io.*;
+-import java.util.ArrayList;
+-import java.util.List;
+ 
+ public class UserSystem {
+-    private List<GameUser> users = new ArrayList<>();
++    private LinkList<GameUser> users = new LinkList<>();
+     private int nextId = 1;
+     private final File userFile = new File("users.txt");
+ 
+     public UserSystem() {
+-        loadUsersFromFile(); // موقع اجرا، لیست رو از فایل بخون
++        loadUsersFromFile();
+     }
+ 
+     public GameUser login(String username, String password) {
+Index: src/Game/Login/LoginRegisterApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game.Login;\n\nimport javafx.application.Application;\nimport javafx.geometry.Insets;\nimport javafx.geometry.Pos;\nimport javafx.scene.Scene;\nimport javafx.scene.control.*;\nimport javafx.scene.image.*;\nimport javafx.scene.layout.*;\nimport javafx.scene.paint.Paint;\nimport javafx.scene.text.Font;\nimport javafx.stage.Stage;\n\npublic class LoginRegisterApp extends Application {\n\n    private UserSystem userSystem = new UserSystem();\n    private Stage primaryStage;\n    private Font gotFont;\n    private int capacity = 0;\n\n    @Override\n    public void start(Stage stage) {\n        this.primaryStage = stage;\n        primaryStage.setResizable(false); // جلوگیری از resize\n        primaryStage.setWidth(700);\n        primaryStage.setHeight(525);\n        primaryStage.setTitle(\"Game of Thrones Login\");\n\n        loadFont();\n        showLoginScene();\n        primaryStage.show();\n    }\n\n    private void loadFont() {\n        try {\n            gotFont = Font.loadFont(getClass().getResourceAsStream(\"/got.ttf\"), 18);\n        } catch (Exception e) {\n            gotFont = Font.font(\"Serif\", 18); // fallback\n        }\n    }\n\n    private void showLoginScene() {\n        Label titleLabel = new Label(\"Entering Westeros\");\n        titleLabel.setFont(gotFont);\n        titleLabel.setStyle(\"-fx-text-fill: #000000; -fx-font-size: 22px;-fx-font-weight: bold;\");\n\n        TextField usernameField = new TextField();\n        usernameField.setMaxWidth(300);\n        usernameField.setPromptText(\"User Name\");\n\n        PasswordField passwordField = new PasswordField();\n        passwordField.setMaxWidth(300);\n        passwordField.setPromptText(\"Password (8 digits)\");\n\n        Label statusLabel = new Label();\n        statusLabel.setStyle(\"-fx-text-fill: red;-fx-font-family: Arial\");\n\n        Button loginButton = new Button(\"Enter\");\n        loginButton.setMaxWidth(90);\n        Button switchToRegisterButton = new Button(\"Register\");\n        switchToRegisterButton.setMaxWidth(90);\n\n        loginButton.setOnAction(e -> {\n            String username = usernameField.getText();\n            String password = passwordField.getText();\n\n            if (password.length() != 8) {\n                statusLabel.setText(\"The password must be exactly 8 characters!\");\n                return;\n            }\n\n            GameUser user = userSystem.login(username, password);\n            if (user != null) {\n                statusLabel.setStyle(\"-fx-text-fill: green;-fx-font-family: Arial\");\n                statusLabel.setText(\"✅ Successful login، \" + user.username + \"!\");\n            } else {\n                statusLabel.setText(\"Login failed ❌ Please check the information..\");\n            }\n        });\n\n        switchToRegisterButton.setOnAction(e -> showRegisterScene());\n\n        VBox root = new VBox(10, titleLabel, usernameField, passwordField, loginButton, switchToRegisterButton, statusLabel);\n        setupLayout(root);\n\n        Scene scene = new Scene(root, 500, 400);\n        scene.getStylesheets().add(getClass().getResource(\"/style.css\").toExternalForm());\n        primaryStage.setScene(scene);\n    }\n\n    private void showRegisterScene() {\n        Label titleLabel = new Label(\"Registration in the Westeros\");\n        titleLabel.setFont(gotFont);\n        titleLabel.setStyle(\"-fx-text-fill: #000000; -fx-font-size: 22px;-fx-font-weight: bold;\");\n\n        TextField usernameField = new TextField();\n        usernameField.setPromptText(\"User Name\");\n        usernameField.setMaxWidth(300);\n\n        PasswordField passwordField = new PasswordField();\n        passwordField.setPromptText(\"Password (8 characters)\");\n        passwordField.setMaxWidth(300);\n\n        PasswordField confirmPasswordField = new PasswordField();\n        confirmPasswordField.setPromptText(\"Password confirmation\");\n        confirmPasswordField.setMaxWidth(300);\n\n        Label statusLabel = new Label();\n        statusLabel.setStyle(\"-fx-text-fill: red;-fx-font-family: Arial\");\n\n        Button registerButton = new Button(\"Register\");\n        registerButton.setMaxWidth(90);\n        Button backButton = new Button(\"Back\");\n        backButton.setMaxWidth(90);\n\n        registerButton.setOnAction(e -> {\n            String username = usernameField.getText();\n            String password = passwordField.getText();\n            String confirm = confirmPasswordField.getText();\n\n            if (password.length() != 8 || confirm.length() != 8) {\n                statusLabel.setText(\"The password must be exactly 8 characters!\");\n                return;\n            }\n\n            boolean result = userSystem.register(username, password, confirm);\n\n            if (userSystem.getUserCount() > 7) {\n                statusLabel.setStyle(\"-fx-text-fill: red;-fx-font-family: Arial\");\n                statusLabel.setText(\"❌ Westeros is full. You cannot register more than 7 players.\");\n                return;\n            }\n\n            if (result) {\n                statusLabel.setStyle(\"-fx-text-fill: green;\");\n                statusLabel.setText(\"✅ Registration was successful!\");\n            } else {\n                statusLabel.setStyle(\"-fx-text-fill: red;-fx-font-family: Arial\");\n                statusLabel.setText(\"❌ Registration failed. Username might be taken or info invalid.\");\n            }\n        });\n\n\n        backButton.setOnAction(e -> showLoginScene());\n\n        VBox root = new VBox(10, titleLabel, usernameField, passwordField, confirmPasswordField, registerButton, backButton, statusLabel);\n        setupLayout(root);\n\n        Scene scene = new Scene(root, 500, 400);\n        scene.getStylesheets().add(getClass().getResource(\"/style.css\").toExternalForm());\n        primaryStage.setScene(scene);\n    }\n\n    private void setupLayout(VBox root) {\n        root.setPadding(new Insets(20));\n        root.setAlignment(Pos.CENTER);\n        root.setSpacing(15);\n        root.setStyle(\"-fx-background-color: rgba(0,0,0,0.7);\");\n\n        // پس\u200Cزمینه تصویری\n        BackgroundImage bgImage = new BackgroundImage(\n                new Image(getClass().getResource(\"/got_bg.jpg\").toExternalForm(), 500, 400, false, true),\n                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,\n                BackgroundPosition.CENTER, BackgroundSize.DEFAULT);\n\n        root.setBackground(new Background(bgImage));\n    }\n\n    public static void main(String[] args) {\n        launch(args);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Game/Login/LoginRegisterApp.java b/src/Game/Login/LoginRegisterApp.java
+--- a/src/Game/Login/LoginRegisterApp.java	(revision e10569cac1d4b50812a1bebdf84abcc94e842ce6)
++++ b/src/Game/Login/LoginRegisterApp.java	(date 1747847438265)
+@@ -7,7 +7,6 @@
+ import javafx.scene.control.*;
+ import javafx.scene.image.*;
+ import javafx.scene.layout.*;
+-import javafx.scene.paint.Paint;
+ import javafx.scene.text.Font;
+ import javafx.stage.Stage;
+ 
+@@ -16,7 +15,6 @@
+     private UserSystem userSystem = new UserSystem();
+     private Stage primaryStage;
+     private Font gotFont;
+-    private int capacity = 0;
+ 
+     @Override
+     public void start(Stage stage) {

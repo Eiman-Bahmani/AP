@@ -1,0 +1,33 @@
+# فایل‌های IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# فایل‌های ساخته شده توسط Gradle یا Maven
+/build/
+target/
+
+# فایل‌های مربوط به لاگ و خطا
+*.log
+
+# فایل‌های کلاس کامپایل‌شده
+*.class
+
+# فایل‌های سیستمی
+.DS_Store
+Thumbs.db
+
+# تنظیمات شخصی Git
+*.swp
+*~
+*.bak
+*.tmp
+
+# فایل‌های مربوط به VSCode در صورت استفاده هم‌زمان
+.vscode/
+
+# فایل‌های کانفیگ سیستمی
+.settings/
+.project
+.classpath
