@@ -1,6 +1,7 @@
 package Game.model;
-
 import Game.enums.KingdomType;
+import Game.model.Building.Building;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Kingdom {
 
         // ایجاد قلعه اولیه
         Position mainCastlePosition = new Position(0, 0, 5, 5); // در مختصات 0, 0 با ابعاد 5x5
-        Castle castle = new Castle("Main Castle", 1, mainCastlePosition);
+        Castle castle = new Castle("Main Castle", 1, mainCastlePosition , 100); //باید مقدار بدیم
         buildings.add(castle);
     }
 

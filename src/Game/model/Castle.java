@@ -1,8 +1,10 @@
 package Game.model;
 
-    public class Castle extends Building {
-        public Castle(String name, int level, Position position) {
-            super(name, level, position);
+import Game.model.Building.Building;
+
+public class Castle extends Building {
+        public Castle(String name, int level, Position position , int strength) {
+            super(name, level, position , strength);
         }
 
         @Override
